@@ -23,8 +23,8 @@ To lookup a word (or words) in Google use `G` command:
     :G hello
     :G start up
 
-`G` command can use a word under the cursor. Just move the cursor to a word and
-type the same command in the command line:
+`G` command can use a word under the cursor. Just move the cursor to the word
+and type the same command in the command line:
 
     :G
 
@@ -35,7 +35,7 @@ clues:
     :G function
     :G ruby
 
-There is also special command named `Gf` to prepend the current file type
+There is also a special command named `Gf` to prepend the current file type
 automatically:
 
     :Gf
@@ -44,10 +44,12 @@ automatically:
 
 Moreover, you can use double quotes (`"`) to perform [phrase
 search](http://support.google.com/websearch/bin/answer.py?hl=en&answer=136861).
-Just just enclose some words in quotation marks as you type. The standalone
-double quote indicates that everything after it should enclosed within quotation
+Just enclose some words between quotation marks as you type.
+
+You can also use a standalone quotation mark as it has some extra meaning. It
+indicates that everything following it should be enclosed within quotation
 marks. In other words, **vim-g** will detect a standalone quotation mark, then
-threat it as a phrase opening and generate the closing one.
+threat it as an opening phrase and generate the closing mark.
 
 Examples:
 
@@ -56,8 +58,8 @@ Examples:
     :G foo bar " something else
 
 What's even more interesting this feature works in the visual mode also!
-Therefore you can perform phrase search on selected words. Just select words and
-type:
+Therefore, you can perform a strict phrase search on selected words. Just select
+words and type:
 
     :G "
     :G " foo bar
