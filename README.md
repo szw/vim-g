@@ -35,18 +35,19 @@ clues:
     :G function
     :G ruby
 
-There is also special command to prepend current filetype automatically named
-`Gf`:
+There is also special command named `Gf` to prepend the current file type
+automatically:
 
     :Gf
     :Gf strpos
     :Gf function
 
-Moreover, you can use double quotes to perform phrase search. If you type text
-in the command line just enclose it between quotation marks. You may also use
-standalone double quote mark to indicate that everything after it should
-enclosed within quotation marks. In other words, **vim-g** will detect
-a standalone double quote as an opening one and close it itself.
+Moreover, you can use double quotes (`"`) to perform [phrase
+search](http://support.google.com/websearch/bin/answer.py?hl=en&answer=136861).
+Just just enclose some words in quotation marks as you type. The standalone
+double quote indicates that everything after it should enclosed within quotation
+marks. In other words, **vim-g** will detect a standalone quotation mark, then
+threat it as a phrase opening and generate the closing one.
 
 Examples:
 
@@ -54,12 +55,13 @@ Examples:
     :Gf " help substitute
     :G foo bar " something else
 
-What's even more interesting this feature works in the visual mode as well.
+What's even more interesting this feature works in the visual mode also!
 Therefore you can perform phrase search on selected words. Just select words and
 type:
 
     :G "
     :G " foo bar
+
 
 Configuration
 -------------
