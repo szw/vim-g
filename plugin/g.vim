@@ -1,6 +1,6 @@
 " vim-g - The handy Google lookup for Vim
 " Maintainer:   Szymon Wrozynski
-" Version:      0.0.2
+" Version:      0.0.3
 "
 " Installation:
 " Place in ~/.vim/plugin/g.vim or in case of Pathogen:
@@ -34,27 +34,42 @@ if !exists("g:vim_g_query_url")
     let g:vim_g_query_url = "http://google.com/search?q="
 endif
 
-command! -nargs=? -range G :call s:goo('', <q-args>)
-command! -nargs=? -range Gf :call s:goo(&ft, <q-args>)
+command! -nargs=* -range G :call s:goo('', <f-args>)
+command! -nargs=* -range Gf :call s:goo(&ft, <f-args>)
 
-fun! s:goo(ft, query)
+fun! s:goo(ft, ...)
     if getpos('.') == getpos("'<")
         let sel = getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1]
     else
         let sel = ''
     endif
 
-    if empty(a:query)
+    if a:0 == 0
         if empty(sel)
             let words = [a:ft, expand("<cword>")]
         else
             let words = [a:ft, sel]
         end
     else
-        let words = [a:ft, a:query, sel]
+        let open_quote = 0
+
+        for w in a:000
+            if w == '"'
+                let open_quote = (open_quote == 0) ? 1 : 0
+            endif
+        endfor
+
+        let words = [a:ft, join(a:000, " "), sel]
+
+        if open_quote == 1
+            call add(words, '"')
+        endif
+
+        call filter(words, 'len(v:val)')
     endif
 
     let query = substitute(join(words, " "), '^\s*\(.\{-}\)\s*$', '\1', '')
+    let query = substitute(query, '"', '\\"', 'g')
 
     silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
                 \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
