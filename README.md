@@ -27,9 +27,17 @@ same command in the command line:
 
     :G
 
-Additionally, you can select words in the visual mode with help of the `Gs` command:
+Additionally, you can select words in the visual mode exactly in the same way. Just select
+words and type `:G`. You can also prepend your selection with more clues:
 
-    :Gs
+    :G function
+    :G ruby
+
+There is also special command to prepend current filetype automatically named `Gf`:
+
+    :Gf
+    :Gf strpos
+    :Gf function
 
 
 Configuration
