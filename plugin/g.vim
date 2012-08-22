@@ -34,8 +34,8 @@ if !exists("g:vim_g_query_url")
     let g:vim_g_query_url = "http://google.com/search?q="
 endif
 
-command! -nargs=? -range G :call s:goo('', "<args>")
-command! -nargs=? -range Gf :call s:goo(&ft, "<args>")
+command! -nargs=? -range G :call s:goo('', <q-args>)
+command! -nargs=? -range Gf :call s:goo(&ft, <q-args>)
 
 fun! s:goo(ft, query)
     if getpos('.') == getpos("'<")
