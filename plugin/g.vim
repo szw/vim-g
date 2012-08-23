@@ -38,18 +38,10 @@ command! -nargs=* -range G :call s:goo('', <f-args>)
 command! -nargs=* -range Gf :call s:goo(&ft, <f-args>)
 
 fun! s:goo(ft, ...)
-    if getpos('.') == getpos("'<")
-        let sel = getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1]
-    else
-        let sel = ''
-    endif
+    let sel = getpos('.') == getpos("'<") ? getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1] : ''
 
     if a:0 == 0
-        if empty(sel)
-            let words = [a:ft, expand("<cword>")]
-        else
-            let words = [a:ft, sel]
-        end
+        let words = [a:ft, empty(sel) ? expand("<cword>") : sel]
     else
         let query = join(a:000, " ")
         let quotes = len(substitute(query, '[^"]', '', 'g'))
