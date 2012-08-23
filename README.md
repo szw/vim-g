@@ -44,12 +44,9 @@ automatically:
 
 Moreover, you can use double quotes (`"`) to perform [phrase
 search](http://support.google.com/websearch/bin/answer.py?hl=en&answer=136861).
-Just enclose some words between quotation marks as you type.
-
-You can also use a standalone quotation mark as it has some extra meaning. It
-indicates that everything following it should be enclosed within quotation
-marks. In other words, **vim-g** will detect a standalone quotation mark, then
-threat it as an opening phrase and generate the closing mark.
+Just enclose some words between quotation marks as you type. Also, you don't
+have to close manually open quotation marks. **vim-g** will add the missing one
+itself.
 
 Examples:
 
@@ -57,12 +54,12 @@ Examples:
     :Gf " help substitute
     :G foo bar " something else
 
-What's even more interesting this feature works in the visual mode also!
-Therefore, you can perform a strict phrase search on selected words. Just select
-words and type:
+What's even more interesting this also works in the visual mode.  Therefore, you
+can perform a strict phrase search on selected words. Just select words and
+type:
 
     :G "
-    :G " foo bar
+    :G "foo bar
 
 
 Configuration

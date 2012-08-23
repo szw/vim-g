@@ -1,6 +1,6 @@
 " vim-g - The handy Google lookup for Vim
 " Maintainer:   Szymon Wrozynski
-" Version:      0.0.3
+" Version:      0.0.4
 "
 " Installation:
 " Place in ~/.vim/plugin/g.vim or in case of Pathogen:
@@ -51,17 +51,11 @@ fun! s:goo(ft, ...)
             let words = [a:ft, sel]
         end
     else
-        let open_quote = 0
+        let query = join(a:000, " ")
+        let quotes = len(substitute(query, '[^"]', '', 'g'))
+        let words = [a:ft, query, sel]
 
-        for w in a:000
-            if w == '"'
-                let open_quote = (open_quote == 0) ? 1 : 0
-            endif
-        endfor
-
-        let words = [a:ft, join(a:000, " "), sel]
-
-        if open_quote == 1
+        if quotes > 0 && quotes % 2 != 0
             call add(words, '"')
         endif
 
@@ -74,5 +68,4 @@ fun! s:goo(ft, ...)
     silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
                 \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
                 \g:vim_g_open_command . " " . g:vim_g_query_url . "$goo_query" | redraw!
-
 endfun
