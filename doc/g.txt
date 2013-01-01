@@ -1,0 +1,138 @@
+*g.txt*              For Vim version 7.3              Last change: 2013-01-01
+*g*
+
+
+
+
+
+
+                             Vim-G version 0.0.5~
+
+                       The handy Google lookup for Vim~
+
+
+
+
+
+
+Copyright (c) 2012-2013 Szymon Wrozynski
+
+============================================================================
+Table of Contents
+
+    1. About.........................................................|g-about|
+    2. Usage.........................................................|g-usage|
+    3. Configuration.........................................|g-configuration|
+    4. Author and License...................................|g-author-license|
+
+----------------------------------------------------------------------------
+1. About                                                             *g-about*
+
+Vim-G is a tiny plugin that allows you to perform a quick Google search
+directly from Vim. It opens a new browser window with results. Vim-G uses Perl
+for url encoding.
+
+----------------------------------------------------------------------------
+2. Usage                                                             *g-usage*
+
+To lookup a word (or words) in Google use 'G' command: >
+
+    :G hello
+    :G start up
+
+<
+
+'G' command can use a word under the cursor. Just move the cursor to the word
+and type the same command in the command line: >
+
+    :G
+
+<
+
+Additionally, you can select words in the visual mode exactly in the same way.
+Just select words and type ':G'. You can also prepend your selection with more
+clues: >
+
+    :G function
+    :G ruby
+
+<
+
+There is also a special command named 'Gf' to prepend the current file type
+automatically: >
+
+    :Gf
+    :Gf strpos
+    :Gf function
+
+<
+
+Moreover, you can use double quotes ('"') to perform
+(http://support.google.com/websearch/bin/answer.py?hl=en&answer=136861). Just
+enclose some words between quotation marks as you type. Also, you don't have
+to close manually open quotation marks. Vim-G will add the missing one itself.
+
+Examples: >
+
+    :G "foo bar"
+    :Gf " help substitute
+    :G foo bar " something else
+
+<
+
+What's even more interesting this also works in the visual mode. Therefore,
+you can perform a strict phrase search on selected words. Just select words
+and type: >
+
+    :G "
+    :G "foo bar
+
+<
+
+
+----------------------------------------------------------------------------
+3. Configuration                                             *g-configuration*
+
+There are just a few global variables (options) you may set in the '.vimrc'
+file.
+
+
+                                                        *'vim_g_open_command'*
+Default: "xdg-open"
+
+Sets the command used to open the URL. In case of Ubuntu this could be
+"xdg-open" and that is the default value: >
+
+    let g:vim_g_open_command = "xdg-open"
+
+<
+
+
+                                                        *'vim_g_perl_command'*
+Default: "perl"
+
+Sets the Perl command. By default it's "perl": >
+
+    let g:vim_g_perl_command = "perl"
+
+<
+
+
+                                                           *'vim_g_query_url'*
+Default: "http://google.com/search?q="
+
+Sets the query URL. By default it points to Google of course, but you might
+want to place your favorite search engine there: >
+
+    let g:vim_g_query_url = "http://google.com/search?q="
+
+<
+
+
+----------------------------------------------------------------------------
+4. Author and License                                       *g-author-license*
+
+Vim-G plugin was written by Szymon Wrozynski. It is licensed under the same
+terms as Vim itself. For more info see |license|.
+
+vim:tw=78:ts=4:ft=help:norl:

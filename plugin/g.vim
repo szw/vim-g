@@ -1,6 +1,6 @@
 " vim-g - The handy Google lookup for Vim
 " Maintainer:   Szymon Wrozynski
-" Version:      0.0.4
+" Version:      0.0.5
 "
 " Installation:
 " Place in ~/.vim/plugin/g.vim or in case of Pathogen:
