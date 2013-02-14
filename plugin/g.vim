@@ -1,6 +1,6 @@
 " vim-g - The handy Google lookup for Vim
 " Maintainer:   Szymon Wrozynski
-" Version:      0.0.5
+" Version:      0.0.6
 "
 " Installation:
 " Place in ~/.vim/plugin/g.vim or in case of Pathogen:
@@ -23,7 +23,11 @@ endif
 let g:loaded_vim_g = 1
 
 if !exists("g:vim_g_open_command")
-    let g:vim_g_open_command = "xdg-open"
+    if substitute(system('uname'), "\n", "", "") == 'Darwin'
+        let g:vim_g_open_command = "open"
+    else
+        let g:vim_g_open_command = "xdg-open"
+    endif
 endif
 
 if !exists("g:vim_g_perl_command")

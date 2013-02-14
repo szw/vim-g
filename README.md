@@ -64,8 +64,8 @@ There are just a few global variables (options) you may set in the *.vimrc* file
 
 * `g:vim_g_open_command`
 
-  Sets the command used to open the URL. In case of Ubuntu this could be
-  `"xdg-open"` and that is the default value:
+  Sets the command used to open the URL. In case of Ubuntu this would be
+  `"xdg-open"`:
 
         let g:vim_g_open_command = "xdg-open"
 

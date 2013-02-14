@@ -6,7 +6,7 @@
 
 
 
-                             Vim-G version 0.0.5~
+                             Vim-G version 0.0.6~
 
                        The handy Google lookup for Vim~
 
@@ -98,10 +98,10 @@ file.
 
 
                                                         *'vim_g_open_command'*
-Default: "xdg-open"
+Default: "xdg-open" (and "open" on Mac OSX)
 
-Sets the command used to open the URL. In case of Ubuntu this could be
-"xdg-open" and that is the default value: >
+Sets the command used to open the URL. In case of Ubuntu this would be
+"xdg-open": >
 
     let g:vim_g_open_command = "xdg-open"
 
