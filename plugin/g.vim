@@ -63,5 +63,5 @@ fun! s:goo(ft, ...)
 
     silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
                 \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
-                \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1' | redraw!
+                \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &' | redraw!
 endfun
