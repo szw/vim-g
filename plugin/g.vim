@@ -41,6 +41,10 @@ endif
 command! -nargs=* -range G :call s:goo('', <f-args>)
 command! -nargs=* -range Gf :call s:goo(&ft, <f-args>)
 
+fun! g#Goo(text)
+    call s:goo('', a:text)
+endfun
+
 fun! s:goo(ft, ...)
     let sel = getpos('.') == getpos("'<") ? getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1] : ''
 
@@ -61,7 +65,11 @@ fun! s:goo(ft, ...)
     let query = substitute(join(words, " "), '^\s*\(.\{-}\)\s*$', '\1', '')
     let query = substitute(query, '"', '\\"', 'g')
 
+    let lines = [g:vim_g_perl_command, g:vim_g_open_command, g:vim_g_query_url, query]
+
+    call writefile(lines, expand("~/vim-g-debug.txt"))
+
     silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
                 \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
-                \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > ~/vim-g-debug.txt 2>&1 &' | redraw!
+                \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" >> ~/vim-g-debug.txt 2>&1 &' | redraw!
 endfun
