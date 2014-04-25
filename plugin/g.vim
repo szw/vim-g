@@ -38,7 +38,7 @@ if !exists("g:vim_g_query_url")
     let g:vim_g_query_url = "http://google.com/search?q="
 endif
 
-command! -nargs=* -range G :call s:goo('', <f-args>)
+command! -nargs=* -range Go :call s:goo('', <f-args>)
 command! -nargs=* -range Gf :call s:goo(&ft, <f-args>)
 
 fun! s:goo(ft, ...)
