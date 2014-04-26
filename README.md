@@ -101,6 +101,6 @@ There are just a few global variables (options) you may set in the *.vimrc* file
 License
 -------
 
-Copyright &copy; 2012 Szymon Wrozynski. Distributed under the same terms as Vim itself.
+Copyright &copy; 2012 Szymon Wrozynski and Contributors. Distributed under the same terms as Vim itself.
 
 See `:help license`
