@@ -9,7 +9,7 @@
 "     git clone https://github.com/szw/vim-g.git
 "
 " License:
-" Copyright (c) 2012 Szymon Wrozynski. Distributed under the same terms as Vim itself.
+" Copyright (c) 2012-2014 Szymon Wrozynski and Contributors. Distributed under the same terms as Vim itself.
 " See :help license
 "
 " Usage:
