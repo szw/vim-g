@@ -20,27 +20,27 @@ how many users it has and then how to proceed with further development :).
 Usage
 -----
 
-To lookup a word (or words) in Google use `G` command:
+To lookup a word (or words) in Google use `Google` command:
 
-    :G hello
-    :G start up
+    :Google hello
+    :Google start up
 
-`G` command can use a word under the cursor. Just move the cursor to the word and type the same command in the
+`Google` command can use a word under the cursor. Just move the cursor to the word and type the same command in the
 command line:
 
-    :G
+    :Google
 
 Additionally, you can select words in the visual mode exactly in the same way. Just select words and type
-`:G`. You can also prepend your selection with more clues:
+`:Google`. You can also prepend your selection with more clues:
 
-    :G function
-    :G ruby
+    :Google function
+    :Google ruby
 
 There is also a special command named `Gf` to prepend the current file type automatically:
 
-    :Gf
-    :Gf strpos
-    :Gf function
+    :Googlef
+    :Googlef strpos
+    :Googlef function
 
 Moreover, you can use double quotes (`"`) to perform [phrase
 search](http://support.google.com/websearch/bin/answer.py?hl=en&answer=136861). Just enclose some words
@@ -49,15 +49,15 @@ will add the missing one itself.
 
 Examples:
 
-    :G "foo bar"
-    :Gf " help substitute
-    :G foo bar " something else
+    :Google "foo bar"
+    :Googlef " help substitute
+    :Google foo bar " something else
 
 What's even more interesting this also works in the visual mode. Therefore, you can perform a strict phrase
 search on selected words. Just select words and type:
 
-    :G "
-    :G "foo bar
+    :Google "
+    :Google "foo bar
 
 
 Configuration
@@ -84,6 +84,18 @@ There are just a few global variables (options) you may set in the *.vimrc* file
   search engine there:
 
         let g:vim_g_query_url = "http://google.com/search?q="
+
+* `g:vim_g_command`
+  
+  Sets the command mapping for vim-g. By default this is Google, but you may want to prefix it to something shorter such as :G or :Go
+    
+        let g:vim_g_command = "Go"
+
+* `g:vim_g_f_command`
+
+  Sets the command mapping for vim-g's file search function. By default this is Googlef, but you may want to prefix it to something shorter such as :Gf
+
+        let g:vim_g_f_command = "Gf"
 
 
 License

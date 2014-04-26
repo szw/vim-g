@@ -38,8 +38,16 @@ if !exists("g:vim_g_query_url")
     let g:vim_g_query_url = "http://google.com/search?q="
 endif
 
-command! -nargs=* -range G :call s:goo('', <f-args>)
-command! -nargs=* -range Gf :call s:goo(&ft, <f-args>)
+if !exists("g:vim_g_command")
+    let g:vim_g_command = "Google"
+endif
+
+if !exists("g:vim_g_f_command")
+    let g:vim_g_f_command = g:vim_g_command . "f"   
+endif
+
+execute "command! -nargs=* -range ". g:vim_g_command  ." :call s:goo('', <f-args>)"
+execute "command! -nargs=* -range ". g:vim_g_f_command ." :call s:goo(&ft, <f-args>)"
 
 fun! s:goo(ft, ...)
     let sel = getpos('.') == getpos("'<") ? getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1] : ''
