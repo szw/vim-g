@@ -1,4 +1,4 @@
-*g.txt*              For Vim version 7.3              Last change: 2013-01-01
+*g.txt*              For Vim version 7.3              Last change: 2014-04-27
 *g*
 
 
@@ -15,7 +15,7 @@
 
 
 
-Copyright (c) 2012-2013 Szymon Wrozynski
+Copyright (c) 2012-2014 Szymon Wrozynski and Contributors
 
 ============================================================================
 Table of Contents
@@ -35,35 +35,35 @@ for url encoding.
 ----------------------------------------------------------------------------
 2. Usage                                                             *g-usage*
 
-To lookup a word (or words) in Google use 'G' command: >
+To lookup a word (or words) in Google use 'Google' command: >
 
-    :G hello
-    :G start up
+    :Google hello
+    :Google start up
 
 <
 
-'G' command can use a word under the cursor. Just move the cursor to the word
-and type the same command in the command line: >
+'Google' command can use a word under the cursor. Just move the cursor to 
+the word and type the same command in the command line: >
 
-    :G
+    :Google
 
 <
 
 Additionally, you can select words in the visual mode exactly in the same way.
-Just select words and type ':G'. You can also prepend your selection with more
-clues: >
+Just select words and type ':Google'. You can also prepend your selection 
+with more clues: >
 
-    :G function
-    :G ruby
+    :Google function
+    :Google ruby
 
 <
 
-There is also a special command named 'Gf' to prepend the current file type
-automatically: >
+There is also a special command named 'Googlef' to prepend the current file 
+type automatically: >
 
-    :Gf
-    :Gf strpos
-    :Gf function
+    :Googlef
+    :Googlef strpos
+    :Googlef function
 
 <
 
@@ -74,9 +74,9 @@ to close manually open quotation marks. Vim-G will add the missing one itself.
 
 Examples: >
 
-    :G "foo bar"
-    :Gf " help substitute
-    :G foo bar " something else
+    :Google "foo bar"
+    :Googlef " help substitute
+    :Google foo bar " something else
 
 <
 
@@ -84,8 +84,8 @@ What's even more interesting this also works in the visual mode. Therefore,
 you can perform a strict phrase search on selected words. Just select words
 and type: >
 
-    :G "
-    :G "foo bar
+    :Google "
+    :Google "foo bar
 
 <
 
@@ -132,7 +132,7 @@ want to place your favorite search engine there: >
 ----------------------------------------------------------------------------
 4. Author and License                                       *g-author-license*
 
-Vim-G plugin was written by Szymon Wrozynski. It is licensed under the same
-terms as Vim itself. For more info see |license|.
+Vim-G plugin was written by Szymon Wrozynski and Contributors. It is licensed 
+under the same terms as Vim itself. For more info see |license|.
 
 vim:tw=78:ts=4:ft=help:norl:
