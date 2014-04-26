@@ -42,7 +42,7 @@ if !exists("g:vim_g_command")
 	let g:vim_g_command = "Google"
 endif
 
-if !exists("g:vim_g_file_command")
+if !exists("g:vim_g_f_command")
 	let g:vim_g_f_command = g:vim_g_command . "f"	
 endif
 
