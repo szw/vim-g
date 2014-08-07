@@ -73,10 +73,11 @@ fun! s:goo(ft, ...)
 
   if has('win32')
     " Target command: start "" "<url>"
-    verbose execute "! " . g:vim_g_open_command . " \"\" \"" . g:vim_g_query_url  . query . "\""
+    silent! execute "! " . g:vim_g_open_command . " \"\" \"" . g:vim_g_query_url  . query . "\""
   else
-    silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
+    silent! execute "! goo_query=\"$(" . g:vim_g_perl_command .
       \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
-      \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &' | redraw!
+      \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &'
   endif
+  redraw!
 endfun
