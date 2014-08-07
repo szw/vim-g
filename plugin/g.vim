@@ -23,7 +23,9 @@ endif
 let g:loaded_vim_g = 1
 
 if !exists("g:vim_g_open_command")
-  if substitute(system('uname'), "\n", "", "") == 'Darwin'
+  if has("win32")
+    let g:vim_g_open_command = "start"
+  elseif substitute(system('uname'), "\n", "", "") == 'Darwin'
     let g:vim_g_open_command = "open"
   else
     let g:vim_g_open_command = "xdg-open"
@@ -69,7 +71,12 @@ fun! s:goo(ft, ...)
   let query = substitute(join(words, " "), '^\s*\(.\{-}\)\s*$', '\1', '')
   let query = substitute(query, '"', '\\"', 'g')
 
-  silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
-    \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
-    \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &' | redraw!
+  if has('win32')
+    " Target command: start "" "<url>"
+    verbose execute "! " . g:vim_g_open_command . " \"\" \"" . g:vim_g_query_url  . query . "\""
+  else
+    silent! exe "! goo_query=\"$(" . g:vim_g_perl_command .
+      \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
+      \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &' | redraw!
+  endif
 endfun

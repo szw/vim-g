@@ -30,7 +30,7 @@ Table of Contents
 
 Vim-G is a tiny plugin that allows you to perform a quick Google search
 directly from Vim. It opens a new browser window with results. Vim-G uses Perl
-for url encoding.
+for URL encoding (except on Windows).
 
 ----------------------------------------------------------------------------
 2. Usage                                                             *g-usage*
