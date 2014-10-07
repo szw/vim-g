@@ -60,6 +60,7 @@ search on selected words. Just select words and type:
     :Google "foo bar
 
 You may want to quickly go to the first Google result of a search term. Just use `:Googlel` (l stands for *lucky*) :
+
     :Googlel github
 
 *Note:* Google will perform a regular search if search terms are ambiguous.
