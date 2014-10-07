@@ -40,6 +40,10 @@ if !exists("g:vim_g_query_url")
   let g:vim_g_query_url = "http://google.com/search?q="
 endif
 
+if !exists("g:vim_g_query_url_lucky")
+  let g:vim_g_query_url_lucky = "http://www.google.com/search?ie=UTF-8&oe=UTF-8&sourceid=navclient&gfns=1&q="
+endif
+
 if !exists("g:vim_g_command")
   let g:vim_g_command = "Google"
 endif
@@ -48,10 +52,20 @@ if !exists("g:vim_g_f_command")
   let g:vim_g_f_command = g:vim_g_command . "f"   
 endif
 
-execute "command! -nargs=* -range ". g:vim_g_command  ." :call s:goo('', <f-args>)"
-execute "command! -nargs=* -range ". g:vim_g_f_command ." :call s:goo(&ft, <f-args>)"
+if !exists("g:vim_g_l_command")
+  let g:vim_g_l_command = g:vim_g_command . "l"
+endif
 
-fun! s:goo(ft, ...)
+if !exists("g:vim_g_f_l_command")
+  let g:vim_g_f_l_command = g:vim_g_f_command . "l"
+endif
+
+execute "command! -nargs=* -range ". g:vim_g_command  ." :call s:goo('','', <f-args>)"
+execute "command! -nargs=* -range ". g:vim_g_f_command ." :call s:goo(&ft,'', <f-args>)"
+execute "command! -nargs=* -range ". g:vim_g_l_command ." :call s:goo('','lucky', <f-args>)"
+execute "command! -nargs=* -range ". g:vim_g_f_l_command ." :call s:goo(&ft,'lucky', <f-args>)"
+
+fun! s:goo(ft,lucky, ...)
   let sel = getpos('.') == getpos("'<") ? getline("'<")[getpos("'<")[2] - 1:getpos("'>")[2] - 1] : ''
 
   if a:0 == 0
@@ -71,13 +85,15 @@ fun! s:goo(ft, ...)
   let query = substitute(join(words, " "), '^\s*\(.\{-}\)\s*$', '\1', '')
   let query = substitute(query, '"', '\\"', 'g')
 
+  let query_url = a:lucky == 'lucky' ? g:vim_g_query_url_lucky : g:vim_g_query_url
+
   if has('win32')
     " Target command: start "" "<url>"
-    silent! execute "! " . g:vim_g_open_command . " \"\" \"" . g:vim_g_query_url  . query . "\""
+    silent! execute "! " . g:vim_g_open_command . " \"\" \"" . query_url  . query . "\""
   else
     silent! execute "! goo_query=\"$(" . g:vim_g_perl_command .
       \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
-      \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &'
+      \g:vim_g_open_command . ' "' . query_url . "$goo_query" . '" > /dev/null 2>&1 &'
   endif
   redraw!
 endfun
