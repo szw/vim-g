@@ -1,0 +1,9 @@
+'vim_g_open_command'	g.txt	/*'vim_g_open_command'*
+'vim_g_perl_command'	g.txt	/*'vim_g_perl_command'*
+'vim_g_query_url'	g.txt	/*'vim_g_query_url'*
+g	g.txt	/*g*
+g-about	g.txt	/*g-about*
+g-author-license	g.txt	/*g-author-license*
+g-configuration	g.txt	/*g-configuration*
+g-usage	g.txt	/*g-usage*
+g.txt	g.txt	/*g.txt*
