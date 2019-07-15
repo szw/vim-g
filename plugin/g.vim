@@ -32,8 +32,8 @@ if !exists("g:vim_g_open_command")
   endif
 endif
 
-if !exists("g:vim_g_perl_command")
-  let g:vim_g_perl_command = "perl"
+if !exists("g:vim_g_python_command")
+  let g:vim_g_python_command = "python3"
 endif
 
 if !exists("g:vim_g_query_url")
@@ -75,8 +75,8 @@ fun! s:goo(ft, ...)
     " Target command: start "" "<url>"
     silent! execute "! " . g:vim_g_open_command . " \"\" \"" . g:vim_g_query_url  . query . "\""
   else
-    silent! execute "! goo_query=\"$(" . g:vim_g_perl_command .
-      \" -MURI::Escape -e 'print uri_escape($ARGV[0]);' \"" . query . "\")\" && " .
+    silent! execute "! goo_query=\"$(" . g:vim_g_python_command .
+      \" -c 'import urllib.parse; print(urllib.parse.quote(\"". query."\"))')\" && " .
       \g:vim_g_open_command . ' "' . g:vim_g_query_url . "$goo_query" . '" > /dev/null 2>&1 &'
   endif
   redraw!
